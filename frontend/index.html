@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>TheSteelDesigner.eu | Expert Structural Engineering</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="European structural engineering practice specialised in steel structure design, SAP2000, ETABS, and Tekla Detailing."
+    />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=JetBrains+Mono:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+    />
+
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="bg-blob blob-1"></div>
+    <div class="bg-blob blob-2"></div>
+
+    <header>
+      <div class="glass nav-pill">
+        <a href="#" class="logo">
+          <img src="logo-removebg-preview.png" alt="The Steel Designer Logo" />
+          TheSteelDesigner.EU
+        </a>
+
+        <div style="display: flex; align-items: center; gap: 15px">
+          <button
+            class="theme-toggle"
+            id="themeToggle"
+            aria-label="Toggle Light/Dark Mode"
+          >
+            <span id="themeIcon">☀️</span>
+          </button>
+
+          <div
+            class="menu-toggle"
+            onclick="document.querySelector('nav').classList.toggle('active')"
+          >
+            ☰
+          </div>
+        </div>
+
+        <nav>
+          <a href="#services">Services</a>
+          <a href="#workflow">Workflow</a>
+          <a href="#portfolio">Projects</a>
+          <a href="#about">About</a>
+          <a href="#contact" style="color: var(--primary); font-weight: 700"
+            >Request Quote</a
+          >
+        </nav>
+      </div>
+    </header>
+
+    <main>
+      <section class="container hero">
+        <div class="hero-grid">
+          <div class="hero-text reveal">
+            <div class="tech-text">Structural Engineering & Detailing</div>
+            <h1>Precision Steel <br />Design & Analysis.</h1>
+            <p>
+              European practice led by <strong>Silviu Ionescu, PhD</strong>. We
+              transform complex architectural visions into buildable,
+              Eurocode-compliant steel structures using advanced FEA and BIM
+              detailing.
+            </p>
+
+            <div class="hero-tags">
+              <span class="hero-badge">EN 1993 (Steel)</span>
+              <span class="hero-badge">EN 1998 (Seismic)</span>
+              <span class="hero-badge">LOD 400 BIM</span>
+            </div>
+
+            <div style="margin: 30px 0">
+              <span
+                class="hero-badge"
+                style="
+                  border-color: var(--primary);
+                  background: rgba(6, 182, 212, 0.1);
+                "
+                >Tekla Structures</span
+              >
+              <span class="hero-badge">SAP2000</span>
+              <span class="hero-badge">ETABS</span>
+            </div>
+
+            <div style="margin-top: 40px">
+              <a
+                href="#contact"
+                class="btn btn-primary"
+                style="margin-bottom: 20px"
+                >Get a Quote</a
+              >
+              <a
+                href="#portfolio"
+                class="btn btn-outline"
+                style="margin-left: 10px"
+                >View Portfolio</a
+              >
+            </div>
+          </div>
+
+          <div class="glass hero-card reveal">
+            <div class="tech-text">// CAPABILITIES_MATRIX</div>
+            <p style="font-size: 0.9rem">
+              Full-cycle engineering from static calculation to NC fabrication
+              files.
+            </p>
+            <div class="stat-grid">
+              <div class="stat-item">
+                <h4>Analysis</h4>
+                <span>Non-linear / Dynamic</span>
+              </div>
+              <div class="stat-item">
+                <h4>Detailing</h4>
+                <span>Shop Drawings / BOM</span>
+              </div>
+              <div class="stat-item">
+                <h4>Optimization</h4>
+                <span>Weight Reduction</span>
+              </div>
+              <div class="stat-item">
+                <h4>Review</h4>
+                <span>3rd Party Check</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="services" class="section-padding">
+        <div class="container">
+          <div class="tech-text reveal">WHAT WE DO</div>
+          <h2 class="reveal">Core Competencies</h2>
+
+          <div class="grid-3">
+            <article class="glass service-card reveal">
+              <div class="service-icon">
+                <img
+                  style="max-width: 90% !important"
+                  src="logo-csiamerica.svg"
+                  alt=""
+                />
+              </div>
+              <h3>Design & Analysis</h3>
+              <p>
+                Conceptual and detailed design of steel structures (halls,
+                platforms, mezzanines) strictly to Eurocodes.
+              </p>
+              <ul class="service-list">
+                <li>Global analysis in SAP2000 & ETABS</li>
+                <li>Seismic design (EN 1998)</li>
+                <li>Buckling & Stability checks</li>
+              </ul>
+            </article>
+
+            <article class="glass service-card reveal">
+              <div class="service-icon">
+                <span class="eurocode-logo">EN 1993-1-8</span>
+              </div>
+              <h3>Steel Connections Design</h3>
+              <p>
+                Design and verification of complex steel connections, ensuring
+                constructability and safety.
+              </p>
+              <ul class="service-list">
+                <li>Moment-resisting joints</li>
+                <li>Base plates & Splices</li>
+                <li>Calculation reports for QA/QC</li>
+              </ul>
+            </article>
+
+            <article class="glass service-card reveal">
+              <div class="service-icon">
+                <img
+                  style="max-width: 70% !important"
+                  src="tekla-logo.svg"
+                  alt=""
+                />
+              </div>
+              <h3>Tekla Modelling & Detailing</h3>
+              <p>
+                High-fidelity 3D BIM models perfectly synchronized with analysis
+                results for zero-clash erection.
+              </p>
+              <ul class="service-list">
+                <li>GA & Assembly Drawings</li>
+                <li>NC (DSTV) & DXF Files</li>
+                <li>LOD 350-400 Modeling</li>
+              </ul>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section id="workflow" class="section-padding">
+        <div class="container">
+          <h2 class="reveal" style="text-align: center">The Workflow</h2>
+
+          <div style="text-align: center; margin-bottom: 20px" class="reveal">
+            <h3 style="color: var(--primary); margin-bottom: 10px">
+              How collaboration works
+            </h3>
+            <p style="max-width: 700px; margin: 0 auto">
+              Seamless integration from concept to fabrication.
+            </p>
+          </div>
+
+          <div class="h-timeline-wrapper reveal">
+            <div class="h-timeline-container">
+              <div class="h-timeline-item">
+                <div class="h-timeline-marker">
+                  <i class="fa-solid fa-handshake"></i>
+                </div>
+                <div class="glass h-timeline-content">
+                  <h3>Your External Partner</h3>
+                  <p>
+                    TheSteelDesigner.eu acts as your
+                    <strong
+                      >external steel design, analysis, Tekla and consultancy
+                      partner</strong
+                    >. The practice supports in-house teams when workload is
+                    high or when deeper expertise is needed in Eurocodes,
+                    SAP2000/ETABS analysis and structural behaviour.
+                  </p>
+                </div>
+              </div>
+
+              <div class="h-timeline-item">
+                <div class="h-timeline-marker">
+                  <i class="fa-solid fa-arrows-spin"></i>
+                </div>
+                <div class="glass h-timeline-content">
+                  <h3>Flexible Integration</h3>
+                  <p>
+                    We can join at almost any stage of a project – from early
+                    concept and global analysis to detailed Tekla modelling,
+                    consultancy on existing designs and second opinions before
+                    fabrication. The approach is simple: clear assumptions,
+                    clear calculations, clear deliverables.
+                  </p>
+                </div>
+              </div>
+
+              <div class="h-timeline-item">
+                <div class="h-timeline-marker">
+                  <i class="fa-solid fa-check-circle"></i>
+                </div>
+                <div class="glass h-timeline-content">
+                  <h3>Why Collaborate?</h3>
+                  <p>
+                    We fill specialist gaps in your team, focusing on technical
+                    excellence from global analysis to fabrication readiness,
+                    and offering <strong>independent review</strong> to ensure
+                    project success.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="workflow-grid">
+            <div class="glass step-card reveal">
+              <div class="step-num">01</div>
+              <h3>Brief & Scope</h3>
+              <p>
+                Send architectural drawings or IFC models. We define the scope
+                (Analysis, Tekla, or Review) and provide a fixed fee estimation.
+              </p>
+            </div>
+            <div class="glass step-card reveal">
+              <div class="step-num">02</div>
+              <h3>Analysis & Model</h3>
+              <p>
+                We build the validated FEM model, perform Eurocode checks,
+                optimize sections, and synchronize the geometry.
+              </p>
+            </div>
+            <div class="glass step-card reveal">
+              <div class="step-num">03</div>
+              <h3>Delivery</h3>
+              <p>
+                You receive comprehensive calculation reports, the 3D model, PDF
+                drawings, and fabrication-ready NC files.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="portfolio" class="section-padding">
+        <div class="container">
+          <div class="tech-text reveal">VISUAL RECORD</div>
+          <h2 class="reveal">Selected Projects</h2>
+          <div class="stats-wrapper reveal">
+            <div class="glass stats-container">
+              <div class="stats-box">
+                <div class="stats-number">250+</div>
+                <div class="stats-label">Steel Projects Completed</div>
+              </div>
+              <div class="stats-divider"></div>
+              <div class="stats-box">
+                <div class="stats-number">14+</div>
+                <div class="stats-label">Years of Experience</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="portfolio-grid" id="portfolioGrid"></div>
+
+          <div style="text-align: center; margin-top: 50px">
+            <button class="btn btn-outline" id="loadMoreBtn">Load More</button>
+          </div>
+        </div>
+      </section>
+
+      <section id="contact" class="section-padding">
+        <div class="container">
+          <div class="glass contact-wrapper reveal">
+            <div id="about">
+              <div class="tech-text">LEADING ENGINEERS</div>
+              <h3>About Us</h3>
+              <p>
+                We are a specialized team of structural engineers and steel
+                detailers, combining academic rigor with practical site
+                experience. Our remote workflow is optimized for seamless
+                integration with steel fabricators and design offices across
+                Europe, from concept design to Tekla Structures detailing.
+              </p>
+
+              <div
+                style="
+                  margin-top: 30px;
+                  padding-top: 20px;
+                  border-top: 1px solid var(--glass-border);
+                "
+              >
+                <p style="color: var(--text-head); font-weight: 600">
+                  contact@thesteeldesigner.eu
+                </p>
+                <p>Based in EU (Remote Practice)</p>
+              </div>
+            </div>
+
+            <div>
+              <div class="tech-text">START PROJECT</div>
+              <h3>Request a Quote</h3>
+              <form id="contactForm" method="post" enctype="text/plain">
+                <div class="form-group">
+                  <label>NAME / COMPANY</label>
+                  <input
+                    type="text"
+                    name="name"
+                    class="form-control"
+                    required
+                  />
+                </div>
+                <div class="form-group">
+                  <label>EMAIL ADDRESS</label>
+                  <input
+                    type="email"
+                    name="email"
+                    class="form-control"
+                    required
+                  />
+                </div>
+                <div class="form-group">
+                  <label>SERVICE REQUIRED</label>
+                  <select name="service" class="form-control">
+                    <option>Steel Design & Analysis</option>
+                    <option>Tekla Detailing</option>
+                    <option>Connection Design</option>
+                    <option>Consultancy / Second Opinion</option>
+                  </select>
+                </div>
+                <div class="form-group">
+                  <label>PROJECT DETAILS</label>
+                  <textarea
+                    name="details"
+                    class="form-control"
+                    placeholder="Type of structure, approx tonnage, deadline..."
+                  ></textarea>
+                </div>
+                <button
+                  type="submit"
+                  class="btn btn-primary"
+                  style="width: 100%"
+                >
+                  Send Request
+                </button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <div class="container">
+        <p>
+          © <span id="year"></span> TheSteelDesigner.eu. Structural Engineering
+          to Eurocodes.
+        </p>
+      </div>
+    </footer>
+
+    <div class="fab-container">
+      <a
+        href="https://wa.me/+40766494335"
+        target="_blank"
+        class="fab fab-wa"
+        aria-label="Chat on WhatsApp"
+      >
+        <i class="fa-brands fa-whatsapp"></i>
+      </a>
+
+      <a
+        href="mailto:contact@thesteeldesigner.eu"
+        class="fab fab-email"
+        aria-label="Send Email"
+      >
+        <i class="fa-solid fa-envelope"></i>
+      </a>
+    </div>
+
+    <div id="lightbox" class="lightbox">
+      <button class="lightbox-close" onclick="closeLightbox()">&times;</button>
+      <img id="lightbox-img" src="" alt="" />
+    </div>
+
+    <script src="script.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  </body>
+</html>
