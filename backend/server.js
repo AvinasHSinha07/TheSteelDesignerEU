@@ -9,6 +9,15 @@ const app = express();
 app.use(express.json());
 app.use(cors());
 
+const corsOptions = {
+  origin: "*", // Allow all origins (for testing, can restrict later)
+  methods: "GET,HEAD,PUT,PATCH,POST,DELETE,OPTIONS",
+  allowedHeaders: "Content-Type,Authorization",
+};
+
+app.use(cors(corsOptions));
+
+
 // Gmail SMTP Transporter (Render-safe)
 const transporter = nodemailer.createTransport({
     host: "smtp.gmail.com",
@@ -26,7 +35,7 @@ app.get('/', (req, res) => {
 });
 
 // Email sending route
-app.post('/send-email', async (req, res) => {
+app.post("/send-email", async (req, res) => {
     const { name, email, service, details } = req.body;
 
     const mailOptions = {
