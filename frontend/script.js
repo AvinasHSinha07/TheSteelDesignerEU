@@ -167,7 +167,7 @@ contactForm.addEventListener("submit", async (e) => {
   const formData = { name, email, service, details };
 
   try {
-    const response = await fetch("https://thesteeldesignereu.onrender.com/send-email", {
+    const response = await fetch("http://localhost:3000/send-email", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

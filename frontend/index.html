@@ -2,11 +2,50 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <title>TheSteelDesigner.eu | Expert Structural Engineering</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>
+      Structural Engineering & Tekla Detailing | TheSteelDesigner.eu
+    </title>
     <meta
       name="description"
-      content="European structural engineering practice specialised in steel structure design, SAP2000, ETABS, and Tekla Detailing."
+      content="Expert structural steel design, analysis, and detailing services. Eurocode compliant engineering using SAP2000, ETABS, and Tekla Structures. Led by Silviu Ionescu, PhD."
+    />
+    <meta
+      name="keywords"
+      content="Structural Engineering, Steel Design, Tekla Detailing, Eurocodes, SAP2000, ETABS, BIM, Civil Engineering, Steel Connections"
+    />
+    <meta name="author" content="Silviu Ionescu, PhD" />
+    <link rel="canonical" href="https://thesteeldesigner.eu/" />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://thesteeldesigner.eu/" />
+    <meta
+      property="og:title"
+      content="Structural Engineering & Tekla Detailing | TheSteelDesigner.eu"
+    />
+    <meta
+      property="og:description"
+      content="Precision steel design, finite element analysis, and BIM detailing services for the European market."
+    />
+    <meta
+      property="og:image"
+      content="https://thesteeldesigner.eu/social-share-image.jpg"
+    />
+
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content="https://thesteeldesigner.eu/" />
+    <meta
+      property="twitter:title"
+      content="Structural Engineering & Tekla Detailing"
+    />
+    <meta
+      property="twitter:description"
+      content="Precision steel design and BIM detailing services."
+    />
+    <meta
+      property="twitter:image"
+      content="https://thesteeldesigner.eu/social-share-image.jpg"
     />
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -19,8 +58,9 @@
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
     />
-
     <link rel="stylesheet" href="style.css" />
+
+    <link rel="icon" href="favicon.ico" type="image/x-icon" />
   </head>
   <body>
     <div class="bg-blob blob-1"></div>
@@ -28,8 +68,11 @@
 
     <header>
       <div class="glass nav-pill">
-        <a href="#" class="logo">
-          <img src="logo-removebg-preview.png" alt="The Steel Designer Logo" />
+        <a href="https://thesteeldesigner.eu" class="logo">
+          <img
+            src="logo-removebg-preview.png"
+            alt="The Steel Designer - Structural Engineering Logo"
+          />
           TheSteelDesigner.EU
         </a>
 
@@ -45,6 +88,7 @@
           <div
             class="menu-toggle"
             onclick="document.querySelector('nav').classList.toggle('active')"
+            aria-label="Open Menu"
           >
             ☰
           </div>
@@ -149,7 +193,7 @@
                 <img
                   style="max-width: 90% !important"
                   src="logo-csiamerica.svg"
-                  alt=""
+                  alt="CSI America SAP2000 and ETABS Analysis Software Logo"
                 />
               </div>
               <h3>Design & Analysis</h3>
@@ -185,7 +229,7 @@
                 <img
                   style="max-width: 70% !important"
                   src="tekla-logo.svg"
-                  alt=""
+                  alt="Tekla Structures BIM Software Logo"
                 />
               </div>
               <h3>Tekla Modelling & Detailing</h3>
@@ -220,7 +264,7 @@
             <div class="h-timeline-container">
               <div class="h-timeline-item">
                 <div class="h-timeline-marker">
-                  <i class="fa-solid fa-handshake"></i>
+                  <i class="fa-solid fa-handshake" aria-hidden="true"></i>
                 </div>
                 <div class="glass h-timeline-content">
                   <h3>Your External Partner</h3>
@@ -238,7 +282,7 @@
 
               <div class="h-timeline-item">
                 <div class="h-timeline-marker">
-                  <i class="fa-solid fa-arrows-spin"></i>
+                  <i class="fa-solid fa-arrows-spin" aria-hidden="true"></i>
                 </div>
                 <div class="glass h-timeline-content">
                   <h3>Flexible Integration</h3>
@@ -254,7 +298,7 @@
 
               <div class="h-timeline-item">
                 <div class="h-timeline-marker">
-                  <i class="fa-solid fa-check-circle"></i>
+                  <i class="fa-solid fa-check-circle" aria-hidden="true"></i>
                 </div>
                 <div class="glass h-timeline-content">
                   <h3>Why Collaborate?</h3>
@@ -326,7 +370,7 @@
       <section id="contact" class="section-padding">
         <div class="container">
           <div class="glass contact-wrapper reveal">
-            <div id="about">
+            <div id="about-content">
               <div class="tech-text">LEADING ENGINEERS</div>
               <h3>About Us</h3>
               <p>
@@ -356,26 +400,28 @@
               <h3>Request a Quote</h3>
               <form id="contactForm" method="post" enctype="text/plain">
                 <div class="form-group">
-                  <label>NAME / COMPANY</label>
+                  <label for="name">NAME / COMPANY</label>
                   <input
                     type="text"
+                    id="name"
                     name="name"
                     class="form-control"
                     required
                   />
                 </div>
                 <div class="form-group">
-                  <label>EMAIL ADDRESS</label>
+                  <label for="email">EMAIL ADDRESS</label>
                   <input
                     type="email"
+                    id="email"
                     name="email"
                     class="form-control"
                     required
                   />
                 </div>
                 <div class="form-group">
-                  <label>SERVICE REQUIRED</label>
-                  <select name="service" class="form-control">
+                  <label for="service">SERVICE REQUIRED</label>
+                  <select id="service" name="service" class="form-control">
                     <option>Steel Design & Analysis</option>
                     <option>Tekla Detailing</option>
                     <option>Connection Design</option>
@@ -383,8 +429,9 @@
                   </select>
                 </div>
                 <div class="form-group">
-                  <label>PROJECT DETAILS</label>
+                  <label for="details">PROJECT DETAILS</label>
                   <textarea
+                    id="details"
                     name="details"
                     class="form-control"
                     placeholder="Type of structure, approx tonnage, deadline..."
@@ -418,7 +465,7 @@
         href="https://wa.me/+40766494335"
         target="_blank"
         class="fab fab-wa"
-        aria-label="Chat on WhatsApp"
+        aria-label="Chat on WhatsApp with Structural Engineer"
       >
         <i class="fa-brands fa-whatsapp"></i>
       </a>
@@ -426,15 +473,21 @@
       <a
         href="mailto:contact@thesteeldesigner.eu"
         class="fab fab-email"
-        aria-label="Send Email"
+        aria-label="Send Email to The Steel Designer"
       >
         <i class="fa-solid fa-envelope"></i>
       </a>
     </div>
 
     <div id="lightbox" class="lightbox">
-      <button class="lightbox-close" onclick="closeLightbox()">&times;</button>
-      <img id="lightbox-img" src="" alt="" />
+      <button
+        class="lightbox-close"
+        onclick="closeLightbox()"
+        aria-label="Close Image"
+      >
+        &times;
+      </button>
+      <img id="lightbox-img" src="" alt="Project detailed view" />
     </div>
 
     <script src="script.js"></script>
