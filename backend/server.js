@@ -5,41 +5,42 @@ const cors = require('cors');
 
 const app = express();
 
-
+// Middleware
 app.use(express.json());
-app.use(cors()); 
+app.use(cors());
 
-
+// Gmail SMTP Transporter (Render-safe)
 const transporter = nodemailer.createTransport({
-    host: 'smtp.gmail.com',
+    host: "smtp.gmail.com",
     port: 465,
-    secure: true, 
+    secure: true,
     auth: {
         user: process.env.EMAIL_USER,
         pass: process.env.EMAIL_PASS
     }
 });
 
-
+// Root route (for Render health check)
 app.get('/', (req, res) => {
     res.send('✅ Server is online and active!');
 });
 
-
+// Email sending route
 app.post('/send-email', async (req, res) => {
     const { name, email, service, details } = req.body;
 
     const mailOptions = {
-        from: email, 
+        from: process.env.EMAIL_USER,   // Required by Gmail
+        replyTo: email,                 // User email sent as reply-to
         to: process.env.EMAIL_USER,
-        subject: `New Quote Request from: ${name}`,
+        subject: `New Quote Request from ${name}`,
         text: `
-            Name: ${name}
-            Email: ${email}
-            Service Required: ${service}
+Name: ${name}
+Email: ${email}
+Service Required: ${service}
 
-            Project Details:
-            ${details}
+Project Details:
+${details}
         `
     };
 
@@ -47,12 +48,13 @@ app.post('/send-email', async (req, res) => {
         await transporter.sendMail(mailOptions);
         res.status(200).json({ message: 'Email sent successfully!' });
     } catch (error) {
-        console.error(error);
-        res.status(500).json({ message: 'Error sending email' });
+        console.error('❌ Email Error:', error);
+        res.status(500).json({ message: 'Error sending email', error });
     }
 });
 
+// Start server
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
-    console.log(`Server running on port ${PORT}`);
+    console.log(`🚀 Server running on port ${PORT}`);
 });
