@@ -1,49 +1,56 @@
 require("dotenv").config();
 const express = require("express");
+const nodemailer = require("nodemailer");
 const cors = require("cors");
-const { Resend } = require("resend");
 
 const app = express();
 
-// Middleware
 app.use(express.json());
-app.use(cors({ origin: "*", methods: "GET,POST,OPTIONS", allowedHeaders: "Content-Type" }));
+app.use(cors());
 
-// Initialize Resend
-const resend = new Resend(process.env.RESEND_API_KEY);
+const transporter = nodemailer.createTransport({
+  host: "smtp.gmail.com",
+  port: 465,
+  secure: true,
+  auth: {
+    user: process.env.EMAIL_USER,
+    pass: process.env.EMAIL_PASS,
+  },
+});
 
-// Root route (health check)
-app.get("/", (req, res) => res.send("✅ Server is online and active!"));
+app.get("/", (req, res) => {
+  res.send("✅ Server is online and active!");
+});
 
-// POST /send-email route
 app.post("/send-email", async (req, res) => {
   const { name, email, service, details } = req.body;
 
-  try {
-    const message = `
+  const mailOptions = {
+    from: process.env.EMAIL_USER,
+    replyTo: email,
+    to: process.env.EMAIL_USER,
+    subject: `New Quote Request from ${name}`,
+    text: `
 Name: ${name}
 Email: ${email}
 Service Required: ${service}
 
 Project Details:
 ${details}
-    `;
+        `,
+  };
 
-    const data = await resend.emails.send({
-      from: process.env.RESEND_SENDER,    // Verified sender on Resend
-      to: process.env.RESEND_RECEIVER,    // Your email to receive messages
-      subject: `New Quote Request from ${name}`,
-      text: message
-    });
-
-    console.log("Email sent:", data);
+  try {
+    await transporter.sendMail(mailOptions);
     res.status(200).json({ message: "Email sent successfully!" });
   } catch (error) {
-    console.error("❌ Resend Error:", error);
+    console.error("❌ Email Error:", error);
     res.status(500).json({ message: "Error sending email", error });
   }
 });
 
-// Start server
+
 const PORT = process.env.PORT || 3000;
-app.listen(PORT, () => console.log(`🚀 Server running on port ${PORT}`));
+app.listen(PORT, () => {
+  console.log(`🚀 Server running on port ${PORT}`);
+});
