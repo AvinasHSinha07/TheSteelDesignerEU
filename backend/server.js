@@ -1,69 +1,49 @@
-require('dotenv').config();
-const express = require('express');
-const nodemailer = require('nodemailer');
-const cors = require('cors');
+require("dotenv").config();
+const express = require("express");
+const cors = require("cors");
+const { Resend } = require("resend");
 
 const app = express();
 
 // Middleware
 app.use(express.json());
-app.use(cors());
+app.use(cors({ origin: "*", methods: "GET,POST,OPTIONS", allowedHeaders: "Content-Type" }));
 
-const corsOptions = {
-  origin: "*", // Allow all origins (for testing, can restrict later)
-  methods: "GET,HEAD,PUT,PATCH,POST,DELETE,OPTIONS",
-  allowedHeaders: "Content-Type,Authorization",
-};
+// Initialize Resend
+const resend = new Resend(process.env.RESEND_API_KEY);
 
-app.use(cors(corsOptions));
+// Root route (health check)
+app.get("/", (req, res) => res.send("✅ Server is online and active!"));
 
-
-// Gmail SMTP Transporter (Render-safe)
-const transporter = nodemailer.createTransport({
-    host: "smtp.gmail.com",
-    port: 465,
-    secure: true,
-    auth: {
-        user: process.env.EMAIL_USER,
-        pass: process.env.EMAIL_PASS
-    }
-});
-
-// Root route (for Render health check)
-app.get('/', (req, res) => {
-    res.send('✅ Server is online and active!');
-});
-
-// Email sending route
+// POST /send-email route
 app.post("/send-email", async (req, res) => {
-    const { name, email, service, details } = req.body;
+  const { name, email, service, details } = req.body;
 
-    const mailOptions = {
-        from: process.env.EMAIL_USER,   // Required by Gmail
-        replyTo: email,                 // User email sent as reply-to
-        to: process.env.EMAIL_USER,
-        subject: `New Quote Request from ${name}`,
-        text: `
+  try {
+    const message = `
 Name: ${name}
 Email: ${email}
 Service Required: ${service}
 
 Project Details:
 ${details}
-        `
-    };
+    `;
 
-    try {
-        await transporter.sendMail(mailOptions);
-        res.status(200).json({ message: 'Email sent successfully!' });
-    } catch (error) {
-        console.error('❌ Email Error:', error);
-        res.status(500).json({ message: 'Error sending email', error });
-    }
+    const data = await resend.emails.send({
+      from: process.env.RESEND_SENDER,    // Verified sender on Resend
+      to: process.env.RESEND_RECEIVER,    // Your email to receive messages
+      subject: `New Quote Request from ${name}`,
+      text: message
+    });
+
+    console.log("Email sent:", data);
+    res.status(200).json({ message: "Email sent successfully!" });
+  } catch (error) {
+    console.error("❌ Resend Error:", error);
+    res.status(500).json({ message: "Error sending email", error });
+  }
 });
 
 // Start server
 const PORT = process.env.PORT || 3000;
-app.listen(PORT, () => {
-    console.log(`🚀 Server running on port ${PORT}`);
-});
+app.listen(PORT, () => console.log(`🚀 Server running on port ${PORT}`));
